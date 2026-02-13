@@ -1,96 +1,200 @@
-# 💎 JewelUX: Next-Gen Multimodal Jewelry Search
+JewelUX – Multimodal Jewelry Retrieval System
 
-JewelUX is a premium, AI-driven jewelry recommendation system that redefines how users discover luxury items. By combining state-of-the-art Computer Vision (**CLIP**) with lightning-fast vector search (**FAISS**), JewelUX enables a truly multimodal search experience—find your perfect piece through text, images, hand-drawn sketches, or even handwriting.
+JewelUX is a multimodal retrieval system designed for jewelry discovery using vision–language embeddings and vector similarity search.
 
-## ✨ Key Features
+The system enables users to search across a jewelry catalog using:
 
-- **🌈 Multimodal Search Engine**: 
-  - **Text-to-Image**: Describe what you want ("Gold necklace with rubies").
-  - **Image Similarity**: Upload a photo to find visually matching jewelry.
-  - **Sketch-to-Item (SBIR)**: Draw a rough sketch and see it come to life.
-  - **Handwriting Search**: Upload a handwritten note or tag to search for specific items.
-- **� Real-time Market Ticker**: Live simulated rates for Gold, Silver, and Diamonds directly in the header.
-- **✨ Liquid Gold UI**: A high-end aesthetic featuring glassmorphism, holographic interactions, and custom "Aura Cursor" tracking.
-- **🏷️ Dynamic Smart Tags**: Automatically generated search suggestions based on current inventory metadata.
-- **🔍 Deep Insights**: Interactive product modals with similarity-based recommendations.
+Natural language
 
-## 🛠️ Technical Stack
+Reference images
 
-### **Backend (Python / FastAPI)**
-- **AI Engine**: [OpenAI CLIP](https://github.com/openai/CLIP) for cross-modal embeddings.
-- **Vector Database**: [Meta FAISS](https://github.com/facebookresearch/faiss) for high-performance similarity search.
-- **OCR**: Handwriting recognition module for extracting search intent from images.
-- **Search Logic**: Hybrid retrieval system combining semantic vector scores with BM25-inspired keyword ranking.
+Hand-drawn sketches
 
-### **Frontend (React / Vite)**
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) for a modern, responsive design system.
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) for fluid transitions and interactive components.
-- **Networking**: Axios for seamless API integration with the FastAPI backend.
+Handwritten notes
 
-## 🚀 Getting Started
+It combines semantic vector search with structured metadata filtering to deliver consistent and scalable results.
 
-### Prerequisites
-- Python 3.9+ 
-- Node.js 18+
-- Recommended: NVIDIA GPU with CUDA for faster inference (optional).
+This project was developed as a capstone implementation of multimodal retrieval and RAG-inspired search architecture.
 
-### Setup & Installation
+Overview
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/GiriPrasathGA/Multimodal-Jewelry-Recommendation-System.git
-   cd Multimodal-Jewelry-Recommendation-System
-   ```
+Traditional e-commerce search relies heavily on manually curated metadata and keyword matching. JewelUX replaces this dependency with embedding-based retrieval using a shared representation space across text and images.
 
-2. **Backend Setup**
-   ```bash
-   cd backend
-   python -m venv .venv
-   # Windows:
-   .\.venv\Scripts\Activate.ps1
-   # Linux/macOS:
-   source .venv/bin/activate
-   
-   pip install -r requirements.txt
-   ```
+Core Objectives
 
-3. **Frontend Setup**
-   ```bash
-   cd ../frontend
-   npm install
-   ```
+Enable cross-modal retrieval (text ↔ image ↔ sketch ↔ handwriting)
 
-### Running the Application
+Reduce reliance on manual tagging
 
-You need two terminal instances:
+Support scalable similarity search
 
-**Terminal 1: Backend**
-```bash
+Maintain modular architecture for future dataset expansion
+
+System Architecture
+
+The system follows a dual-layer retrieval design:
+
+Embedding Layer
+
+OpenAI CLIP generates image and text embeddings in a shared vector space
+
+Sketch queries are processed using edge normalization before embedding
+
+Handwritten text is extracted using OCR and converted into semantic queries
+
+Retrieval Layer
+
+FAISS is used for high-performance approximate nearest neighbor search
+
+Hybrid ranking combines semantic similarity with keyword-aware filtering
+
+Category-level filtering improves precision in ambiguous queries
+
+Separate retrieval pipelines prevent cross-interference between modalities
+
+Key Features
+Multimodal Search
+
+Text-to-Image retrieval using CLIP text embeddings
+
+Image similarity search using CLIP image embeddings
+
+Sketch-Based Image Retrieval (SBIR)
+
+Handwritten query extraction via OCR integration
+
+Hybrid Retrieval
+
+Semantic vector similarity (FAISS)
+
+Keyword-aware re-ranking
+
+Metadata-based filtering
+
+Recommendation Engine
+
+Similarity-based related item suggestions
+
+Embedding clustering for product grouping
+
+Scalability
+
+Precomputed embedding indices
+
+Modular embedding and indexing pipelines
+
+Supports dataset growth without retraining
+
+Technology Stack
+Backend
+
+Python
+
+FastAPI
+
+OpenAI CLIP (ViT-B/32)
+
+FAISS (Vector Indexing)
+
+OCR Module (Handwriting Extraction)
+
+Frontend
+
+React (Vite)
+
+Tailwind CSS
+
+Framer Motion
+
+Axios
+
+Infrastructure
+
+Precomputed embedding storage
+
+Modular indexing system
+
+GPU acceleration (optional)
+
+Installation
+Prerequisites
+
+Python 3.9+
+
+Node.js 18+
+
+Optional: CUDA-enabled GPU
+
+Clone the Repository
+git clone https://github.com/meiyazhagi728/Jewelry_Multimodal_Retrieval.git
+cd Jewelry_Multimodal_Retrieval
+
+Backend Setup
+cd backend
+python -m venv .venv
+
+# Windows
+.\.venv\Scripts\Activate.ps1
+
+# macOS / Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+Frontend Setup
+cd ../frontend
+npm install
+
+Run the Application
+Backend
 cd backend
 python run.py
-```
-*Runs on `http://localhost:8000`*
 
-**Terminal 2: Frontend**
-```bash
+
+Runs on:
+http://localhost:8000
+
+Frontend
 cd frontend
 npm run dev
-```
-*Runs on `http://localhost:5173`*
 
-## 🗺️ Project Structure
 
-```text
-├── backend/
-│   ├── utils/          # CLIP, FAISS, and OCR logic
-│   ├── metadata/       # Item descriptions and CSVs
-│   ├── embeddings/     # Pre-computed vector indices
-│   └── main.py         # FastAPI Endpoints
-├── frontend/
-│   ├── src/components/ # UI Modules (AuraCursor, ResultsGrid, etc.)
-│   └── App.jsx         # Main Logic & State Management
-└── README.md
-```
+Runs on:
+http://localhost:5173
 
----
-*Built as a Capstone Project for RAG & Multimodal AI.*
+Project Structure
+backend/
+  ├── utils/          # Embedding, FAISS, OCR pipelines
+  ├── metadata/       # Attribute data and CSV files
+  ├── embeddings/     # Vector indices
+  └── main.py         # API endpoints
+
+frontend/
+  ├── src/components/ # UI components
+  └── App.jsx         # State management and routing
+
+Technical Highlights
+
+Cross-modal embedding alignment using CLIP
+
+Separate indexing pipelines for sketch and image queries
+
+Hybrid semantic + keyword ranking
+
+OCR integration for handwritten search intent
+
+Scalable vector search using FAISS
+
+Future Improvements
+
+Fine-tuning CLIP on domain-specific jewelry datasets
+
+Dedicated sketch-trained embedding models
+
+Attribute extraction using vision-language prompting
+
+Deployment with containerized infrastructure
+
+Conclusion
+
+This project demonstrates the practical implementation of multimodal retrieval systems, vector search architecture, and hybrid ranking pipelines in a real-world domain setting.
