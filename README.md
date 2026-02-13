@@ -1,127 +1,117 @@
-JewelUX – Multimodal Jewelry Retrieval System
+#JewelUX – Multimodal Jewelry Retrieval System
 
-JewelUX is a multimodal retrieval system designed for jewelry discovery using vision–language embeddings and vector similarity search.
+  JewelUX is a multimodal retrieval system designed for jewelry discovery using vision–language embeddings and vector similarity search.The system enables users to search across a jewelry catalog using natural language, reference images, hand-drawn sketches, or handwritten notes. It combines semantic vector search with structured metadata filtering to deliver consistent and scalable results.
 
-The system enables users to search across a jewelry catalog using:
+  This project was developed as a capstone implementation of multimodal retrieval and RAG-inspired search architecture.
 
-Natural language
+##Overview
 
-Reference images
+  Traditional e-commerce search relies heavily on manually curated metadata and keyword matching. JewelUX replaces this dependency with embedding-based retrieval using a shared representation space across text and images.
 
-Hand-drawn sketches
+##Core objectives:
 
-Handwritten notes
+  Enable cross-modal retrieval (text ↔ image ↔ sketch ↔ handwriting)
 
-It combines semantic vector search with structured metadata filtering to deliver consistent and scalable results.
+  Reduce reliance on manual tagging
 
-This project was developed as a capstone implementation of multimodal retrieval and RAG-inspired search architecture.
+  Support scalable similarity search
 
-Overview
+  Maintain modular architecture for future dataset expansion
 
-Traditional e-commerce search relies heavily on manually curated metadata and keyword matching. JewelUX replaces this dependency with embedding-based retrieval using a shared representation space across text and images.
+##System Architecture
 
-Core Objectives
+  The system follows a dual-layer retrieval design:
 
-Enable cross-modal retrieval (text ↔ image ↔ sketch ↔ handwriting)
+###Embedding Layer
 
-Reduce reliance on manual tagging
+  OpenAI CLIP generates image and text embeddings in a shared vector space.
 
-Support scalable similarity search
+  Sketch queries are processed using edge normalization before embedding.
 
-Maintain modular architecture for future dataset expansion
+  Handwritten text is extracted using OCR and converted into semantic queries.
 
-System Architecture
+###Retrieval Layer
 
-The system follows a dual-layer retrieval design:
+  FAISS is used for high-performance approximate nearest neighbor search.
 
-Embedding Layer
+  Hybrid ranking combines semantic similarity with keyword-aware filtering.
 
-OpenAI CLIP generates image and text embeddings in a shared vector space
+  Category-level filtering improves precision in ambiguous queries.
 
-Sketch queries are processed using edge normalization before embedding
+  The architecture isolates retrieval pipelines for different modalities to prevent cross-interference between text, image, and sketch embeddings.
 
-Handwritten text is extracted using OCR and converted into semantic queries
+##Key Features
 
-Retrieval Layer
+###Multimodal Search:
 
-FAISS is used for high-performance approximate nearest neighbor search
+  Text-to-Image retrieval using CLIP text embeddings
 
-Hybrid ranking combines semantic similarity with keyword-aware filtering
+  Image similarity search using CLIP image embeddings
 
-Category-level filtering improves precision in ambiguous queries
+  Sketch-based image retrieval (SBIR)
 
-Separate retrieval pipelines prevent cross-interference between modalities
+  Handwritten query extraction via OCR integration
 
-Key Features
-Multimodal Search
+###Hybrid Retrieval:
 
-Text-to-Image retrieval using CLIP text embeddings
+  Semantic vector similarity (FAISS)
 
-Image similarity search using CLIP image embeddings
+  Keyword-aware re-ranking
 
-Sketch-Based Image Retrieval (SBIR)
+  Metadata-based filtering
 
-Handwritten query extraction via OCR integration
+  Recommendation Engine:
 
-Hybrid Retrieval
+  Similarity-based related item suggestions
 
-Semantic vector similarity (FAISS)
+  Embedding clustering for product grouping
 
-Keyword-aware re-ranking
+##Scalability:
 
-Metadata-based filtering
+  Precomputed embedding indices
 
-Recommendation Engine
+  Modular embedding and indexing pipelines
 
-Similarity-based related item suggestions
+  Support for dataset growth without retraining
 
-Embedding clustering for product grouping
+##Technology Stack
 
-Scalability
+###Backend:
 
-Precomputed embedding indices
+  Python
 
-Modular embedding and indexing pipelines
+  FastAPI
 
-Supports dataset growth without retraining
+  OpenAI CLIP (ViT-B/32)
 
-Technology Stack
-Backend
+  FAISS (vector indexing)
 
-Python
+  OCR module (handwriting extraction)
 
-FastAPI
+###Frontend:
 
-OpenAI CLIP (ViT-B/32)
+  React (Vite)
 
-FAISS (Vector Indexing)
+  Tailwind CSS
 
-OCR Module (Handwriting Extraction)
+  Framer Motion
 
-Frontend
+  Axios
 
-React (Vite)
+###Infrastructure:
 
-Tailwind CSS
+  Precomputed embedding storage
 
-Framer Motion
+  Modular indexing system
 
-Axios
+  GPU acceleration (optional)
 
-Infrastructure
+##Installation
+###Prerequisites
 
-Precomputed embedding storage
+  Python 3.9+
 
-Modular indexing system
-
-GPU acceleration (optional)
-
-Installation
-Prerequisites
-
-Python 3.9+
-
-Node.js 18+
+  Node.js 18+
 
 Optional: CUDA-enabled GPU
 
@@ -146,21 +136,22 @@ cd ../frontend
 npm install
 
 Run the Application
-Backend
+
+Backend:
+
 cd backend
 python run.py
 
 
-Runs on:
-http://localhost:8000
+Runs on: http://localhost:8000
 
-Frontend
+Frontend:
+
 cd frontend
 npm run dev
 
 
-Runs on:
-http://localhost:5173
+Runs on: http://localhost:5173
 
 Project Structure
 backend/
@@ -195,6 +186,5 @@ Attribute extraction using vision-language prompting
 
 Deployment with containerized infrastructure
 
-Conclusion
-
-This project demonstrates the practical implementation of multimodal retrieval systems, vector search architecture, and hybrid ranking pipelines in a real-world domain setting.
+This project demonstrates practical implementation of multimodal retrieval systems, vector search architecture, and hybrid ranking pipelines in a real-world domain setting.
+make thiss suitable for github repo.as i want to be bold for titles and semi v=bold ofr subtitles and make bullettin points for bullets and those things.I just want to just copy paste ,so maintain the structure.
