@@ -1,14 +1,14 @@
-#JewelUX – Multimodal Jewelry Retrieval System
+# JewelUX – Multimodal Jewelry Retrieval System
 
   JewelUX is a multimodal retrieval system designed for jewelry discovery using vision–language embeddings and vector similarity search.The system enables users to search across a jewelry catalog using natural language, reference images, hand-drawn sketches, or handwritten notes. It combines semantic vector search with structured metadata filtering to deliver consistent and scalable results.
 
   This project was developed as a capstone implementation of multimodal retrieval and RAG-inspired search architecture.
 
-##Overview
+## Overview
 
   Traditional e-commerce search relies heavily on manually curated metadata and keyword matching. JewelUX replaces this dependency with embedding-based retrieval using a shared representation space across text and images.
 
-##Core objectives:
+## Core objectives:
 
   Enable cross-modal retrieval (text ↔ image ↔ sketch ↔ handwriting)
 
@@ -18,11 +18,11 @@
 
   Maintain modular architecture for future dataset expansion
 
-##System Architecture
+## System Architecture
 
   The system follows a dual-layer retrieval design:
 
-###Embedding Layer
+### Embedding Layer
 
   OpenAI CLIP generates image and text embeddings in a shared vector space.
 
@@ -30,7 +30,7 @@
 
   Handwritten text is extracted using OCR and converted into semantic queries.
 
-###Retrieval Layer
+### Retrieval Layer
 
   FAISS is used for high-performance approximate nearest neighbor search.
 
@@ -40,9 +40,9 @@
 
   The architecture isolates retrieval pipelines for different modalities to prevent cross-interference between text, image, and sketch embeddings.
 
-##Key Features
+## Key Features
 
-###Multimodal Search:
+### Multimodal Search:
 
   Text-to-Image retrieval using CLIP text embeddings
 
@@ -52,7 +52,7 @@
 
   Handwritten query extraction via OCR integration
 
-###Hybrid Retrieval:
+### Hybrid Retrieval:
 
   Semantic vector similarity (FAISS)
 
@@ -66,7 +66,7 @@
 
   Embedding clustering for product grouping
 
-##Scalability:
+## Scalability:
 
   Precomputed embedding indices
 
@@ -74,9 +74,9 @@
 
   Support for dataset growth without retraining
 
-##Technology Stack
+##  Technology Stack
 
-###Backend:
+### Backend:
 
   Python
 
@@ -88,7 +88,7 @@
 
   OCR module (handwriting extraction)
 
-###Frontend:
+### Frontend:
 
   React (Vite)
 
@@ -98,7 +98,7 @@
 
   Axios
 
-###Infrastructure:
+### Infrastructure:
 
   Precomputed embedding storage
 
@@ -106,46 +106,47 @@
 
   GPU acceleration (optional)
 
-##Installation
-###Prerequisites
+## Installation
+### Prerequisites
 
-  Python 3.9+
+  Python 3.10.x
 
   Node.js 18+
 
-Optional: CUDA-enabled GPU
+  Optional: CUDA-enabled GPU
 
-Clone the Repository
+### Clone the Repository
 git clone https://github.com/meiyazhagi728/Jewelry_Multimodal_Retrieval.git
 cd Jewelry_Multimodal_Retrieval
 
-Backend Setup
+### Backend Setup
 cd backend
 python -m venv .venv
 
-# Windows
+### Windows
 .\.venv\Scripts\Activate.ps1
 
-# macOS / Linux
+### macOS / Linux
 source .venv/bin/activate
 
 pip install -r requirements.txt
 
-Frontend Setup
+### Frontend Setup
 cd ../frontend
 npm install
 
-Run the Application
+## Run the Application
 
-Backend:
+### Backend:
 
 cd backend
 python run.py
 
-
+```
 Runs on: http://localhost:8000
+```
 
-Frontend:
+### Frontend:
 
 cd frontend
 npm run dev
@@ -164,27 +165,26 @@ frontend/
   ├── src/components/ # UI components
   └── App.jsx         # State management and routing
 
-Technical Highlights
+## Technical Highlights
 
-Cross-modal embedding alignment using CLIP
+  Cross-modal embedding alignment using CLIP
 
-Separate indexing pipelines for sketch and image queries
+  Separate indexing pipelines for sketch and image queries
 
-Hybrid semantic + keyword ranking
+  Hybrid semantic + keyword ranking
 
-OCR integration for handwritten search intent
+  OCR integration for handwritten search intent
 
-Scalable vector search using FAISS
+  Scalable vector search using FAISS
 
-Future Improvements
+## Future Improvements
 
-Fine-tuning CLIP on domain-specific jewelry datasets
+  Fine-tuning CLIP on domain-specific jewelry datasets
 
-Dedicated sketch-trained embedding models
+  Dedicated sketch-trained embedding models
 
-Attribute extraction using vision-language prompting
+  Attribute extraction using vision-language prompting
 
-Deployment with containerized infrastructure
+  Deployment with containerized infrastructure
 
-This project demonstrates practical implementation of multimodal retrieval systems, vector search architecture, and hybrid ranking pipelines in a real-world domain setting.
-make thiss suitable for github repo.as i want to be bold for titles and semi v=bold ofr subtitles and make bullettin points for bullets and those things.I just want to just copy paste ,so maintain the structure.
+  This project demonstrates practical implementation of multimodal retrieval systems, vector search architecture, and hybrid ranking pipelines in a real-world domain setting.
