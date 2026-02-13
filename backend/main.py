@@ -1,3 +1,4 @@
+# main.py - FastAPI backend for JewelUX multimodal retrieval system.
 import os
 import sys
 import base64

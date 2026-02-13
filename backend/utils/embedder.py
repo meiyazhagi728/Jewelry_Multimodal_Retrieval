@@ -1,3 +1,4 @@
+#embedder.py - CLIP-based embedding engine for images, sketches, and text.
 import torch
 import clip
 from PIL import Image
